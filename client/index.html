@@ -4,19 +4,22 @@
 <head>
     <title></title>
     <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="js/vertxbus.js"></script>
 </head>
-<body>
-    <script>
-        var sock = new SockJS('http://localhost:8080/sockjs');
-        sock.onopen = function() {
-            console.log('open');
-        };
-        sock.onmessage = function(e) {
-            console.log('message', e.data);
-        };
-        sock.onclose = function() {
-            console.log('close');
-        };
+
+<script>
+
+    var eb = new vertx.EventBus('http://localhost:8080/eventbus');
+	
+    eb.onopen = function() {
+    	alert('xxx');
+		eb.registerHandler('some-address', function(message) {
+			console.log(message);
+        });
+
+		eb.send('some-address', {name: 'tim', age: 587});
+	}
+
 </script>
 </body>
 </html>

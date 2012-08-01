@@ -15,16 +15,14 @@ httpServer.requestHandler(function(req) {
     }
 
     req.response.sendFile('client/' + file);
-})
+});
 
 /**
  * SockJSServer server setting
  */
 var sockJSServer = vertx.createSockJSServer(httpServer);
-sockJSServer.installApp({prefix: '/sockjs'}, function() {
+sockJSServer.bridge({prefix : '/eventbus'}, [], [] );
 
-
-});
 
 /**
  * Start listening
