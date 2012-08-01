@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+</head>
+<body>
+    <script>
+        var sock = new SockJS('http://localhost:8080/sockjs');
+        sock.onopen = function() {
+            console.log('open');
+        };
+        sock.onmessage = function(e) {
+            console.log('message', e.data);
+        };
+        sock.onclose = function() {
+            console.log('close');
+        };
+</script>
+</body>
+</html>
