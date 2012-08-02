@@ -10,15 +10,13 @@
 <script>
 
     var eb = new vertx.EventBus('http://localhost:8080/eventbus');
-	
-    eb.onopen = function() {
-    	alert('xxx');
-		eb.registerHandler('some-address', function(message) {
-			console.log(message);
-        });
 
-		eb.send('some-address', {name: 'tim', age: 587});
-	}
+    eb.onopen = function() {
+
+        eb.registerHandler('browser.tcp', function(message) {
+			console.log(message.body);
+        });
+    }
 
 </script>
 </body>

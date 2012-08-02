@@ -21,8 +21,7 @@ httpServer.requestHandler(function(req) {
  * SockJSServer server setting
  */
 var sockJSServer = vertx.createSockJSServer(httpServer);
-sockJSServer.bridge({prefix : '/eventbus'}, [], [] );
-
+sockJSServer.bridge({prefix: "/eventbus"}, [{}], [{}]);
 
 /**
  * Start listening
