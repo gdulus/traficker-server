@@ -9,12 +9,12 @@
 
 <script>
 
-    var eb = new vertx.EventBus('http://localhost:8080/eventbus');
+    var eb = new vertx.EventBus('http://localhost:8081/eventbus');
 
     eb.onopen = function() {
 
         eb.registerHandler('browser.tcp', function(message) {
-			console.log(message.body);
+			console.log(message.result);
         });
     }
 

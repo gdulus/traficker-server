@@ -2,11 +2,15 @@
    "http_server":
     {
         "host":"localhost",
-        "port":8080
+        "port":8081
     },
     "tcp_server":
     {
         "host":"localhost",
         "port":1234
+    },
+    "general":
+    {
+        "offset":1000
     }
 };
