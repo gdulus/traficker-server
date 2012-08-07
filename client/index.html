@@ -4,19 +4,19 @@
 <head>
     <title></title>
     <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-    <script src="js/vertxbus.js"></script>
+    <script src="js/main-clj.js"></script>
 </head>
 
 <script>
-
-    var eb = new vertx.EventBus('http://localhost:8081/eventbus');
-
-    eb.onopen = function() {
-
-        eb.registerHandler('browser.tcp', function(message) {
-			console.log(message.result);
-        });
-    }
+    client.core.main();
+//    var eb = new vertx.EventBus('http://localhost:8081/eventbus');
+//
+//    eb.onopen = function() {
+//
+//        eb.registerHandler('browser.tcp', function(message) {
+//			console.log(message.result);
+//        });
+//    }
 
 </script>
 </body>

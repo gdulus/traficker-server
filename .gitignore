@@ -2,3 +2,6 @@
 /*.iml
 /.project
 /.settings
+/client/.lein-deps-sum
+/client/.lein-plugins
+/client/classes
