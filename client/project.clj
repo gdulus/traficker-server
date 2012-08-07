@@ -10,7 +10,8 @@
         :optimizations :whitespace
         :pretty-print true
         :warnings true
-        :foreign-libs [{:file "js/vertxbus.js" :provides  ["vertx"]}]
+        :foreign-libs [{:file "js/vertxbus.js" :provides  ["vertx"]}
+                       {:file "http://maps.googleapis.com/maps/api/js?key=AIzaSyAucos4yX7vSdrzQJgEtbF1HphlE04iCh8&sensor=false" :provides ["google.maps"]}]
       }
     }]
   }
