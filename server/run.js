@@ -35,7 +35,7 @@ var queryOffset = vertx.config.general.offset
 // initialize mongodb module
 vertx.deployModule('vertx.mongo-persistor-v1.1', mongoConfig, 1, function(){
     // initialize tcp servers
-    vertx.deployVerticle('server/tcpServer.js', vertx.config.tcp_server, 10, function() {
+    vertx.deployVerticle('server/tcpServer.js', vertx.config.tcp_server, 1, function() {
         stdout.println("TCP verticles deployed. Starting http verticle.");
     });
     // initialize http server

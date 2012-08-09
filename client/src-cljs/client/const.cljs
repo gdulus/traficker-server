@@ -1,3 +1,4 @@
 (ns client.const)
 
-(def maps {:default_country "Germany"})
+(def maps {:country "Germany"
+           :overlay_id "animation_overlay"})
