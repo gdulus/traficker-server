@@ -5,20 +5,25 @@
             [clojure.browser.dom :as dom]
             [google.maps]))
 
-(defn mainEveneHandller[event]
+(defn- mainEveneHandller[event]
   (utils/log-obj event))
 
+(defn- getBoundsFromResults[results]
+  (.-bounds (.-geometry (nth results 0))))
 
-(defn initMap[]
+(defn- initMap[]
   (let [mapContainer (dom/get-element "map_canvas")
-        mapConfig (js-obj "center" (google.maps.LatLng. (const/initial_position :lat) (const/initial_position :lng))
-                          "zoom" 8
-                          "mapTypeId" (.-ROADMAP google.maps.MapTypeId))]
-    (google.maps.Map. mapContainer mapConfig)))
+        mapConfig (js-obj "mapTypeId" (.-ROADMAP google.maps.MapTypeId))
+        geocoderConfig (js-obj "address" (const/maps :default_country))
+        geocoder (google.maps.Geocoder.)
+        map (google.maps.Map. mapContainer mapConfig)]
+    (.geocode geocoder geocoderConfig (fn [results status] (if (= status (.-OK google.maps.GeocoderStatus))
+                                                             (.fitBounds map (getBoundsFromResults results)))))
+    nil))
 
 (defn ^:export main[]
   (let [eb (vertx.EventBus. "http://localhost:8081/eventbus")]
     (set! (.-onopen eb) #(do
-                           (.registerHandler eb "browser.tcp" mainEveneHandller)
+                           (comment(.registerHandler eb "browser.tcp" mainEveneHandller))
                            (initMap)))
-    eb))
+    nil))
